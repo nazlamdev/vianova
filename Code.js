@@ -21,10 +21,10 @@ function doGet(e) {
 function doPost(e) {
   try {
     var params   = e.parameter;
-    var sede     = (params.codiceSede     || '').trim() || 'N/D';
-    var esito    = (params.esito          || '').trim() || 'N/D';
-    var note     = (params.note           || '').trim();
-    var chiamata = (params.chiamataVianova|| '').trim() || 'N/D';
+    var sede      = (params.codiceSede    || '').trim() || 'N/D';
+    var esito     = (params.esito         || '').trim() || 'N/D';
+    var note      = (params.note          || '').trim();
+    var operatore = (params.nomeOperatore || '').trim() || 'N/D';
 
     var now     = new Date();
     var dateStr = Utilities.formatDate(now, Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm');
@@ -39,7 +39,7 @@ function doPost(e) {
       'Codice Sede:      ' + sede,
       'Esito:            ' + esito,
       (esito === 'KO' && note ? 'Note:             ' + note : ''),
-      'Chiamata Vianova: ' + chiamata,
+      'Nome Operatore:   ' + operatore,
       '',
       '— Vianova Presidio'
     ].filter(function(l){ return l !== false && l !== ''; }).join('\n');
@@ -66,7 +66,7 @@ function doPost(e) {
       + '<tr><td class="lbl">Codice Sede</td><td><strong>' + _esc(sede) + '</strong></td></tr>'
       + '<tr><td class="lbl">Esito</td><td><span class="badge ' + esito.toLowerCase() + '">' + _esc(esito) + '</span></td></tr>'
       + noteRow
-      + '<tr><td class="lbl">Chiamata Vianova</td><td>' + _esc(chiamata) + '</td></tr>'
+      + '<tr><td class="lbl">Nome Operatore</td><td>' + _esc(operatore) + '</td></tr>'
       + '</table>'
       + '<div class="footer">Inviato automaticamente dal sistema Vianova Presidio</div>'
       + '</div></body></html>';

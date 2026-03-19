@@ -301,16 +301,11 @@
       </div>
 
       <div class="form-group">
-        <label class="field-label">
-          Chiamata Vianova<span class="required-star">*</span>
+        <label class="field-label" for="nomeOperatore">
+          Nome Operatore Vianova<span class="required-star">*</span>
         </label>
-        <div class="toggle-group">
-          <input type="radio" id="chiamata-si" name="chiamataVianova" value="SI">
-          <label for="chiamata-si">Sì</label>
-
-          <input type="radio" id="chiamata-no" name="chiamataVianova" value="NO">
-          <label for="chiamata-no">No</label>
-        </div>
+        <input type="text" id="nomeOperatore" name="nomeOperatore"
+               placeholder="Es. Mario Rossi" autocomplete="off" required>
       </div>
 
       <button type="submit" class="btn-submit" id="submitBtn">Invia Esito</button>
@@ -348,18 +343,18 @@
 
     // ---- validazione manuale ----
     function validate() {
-      var sede     = document.getElementById('codiceSede').value.trim();
-      var esito    = document.querySelector('input[name="esito"]:checked');
-      var chiamata = document.querySelector('input[name="chiamataVianova"]:checked');
-      var note     = noteField.value.trim();
+      var sede      = document.getElementById('codiceSede').value.trim();
+      var esito     = document.querySelector('input[name="esito"]:checked');
+      var operatore = document.getElementById('nomeOperatore').value.trim();
+      var note      = noteField.value.trim();
 
-      if (!sede)     { showFeedback('error', 'Inserisci il Codice Sede.'); return false; }
-      if (!esito)    { showFeedback('error', 'Seleziona un Esito (OK / KO).'); return false; }
+      if (!sede)      { showFeedback('error', 'Inserisci il Codice Sede.'); return false; }
+      if (!esito)     { showFeedback('error', 'Seleziona un Esito (OK / KO).'); return false; }
       if (esito.value === 'KO' && !note) {
         showFeedback('error', 'Le Note sono obbligatorie per esito KO.');
         return false;
       }
-      if (!chiamata) { showFeedback('error', 'Indica se è stata effettuata la Chiamata Vianova.'); return false; }
+      if (!operatore) { showFeedback('error', 'Inserisci il Nome Operatore Vianova.'); return false; }
       return true;
     }
 
@@ -372,10 +367,10 @@
       setLoading(true);
 
       var data = new URLSearchParams({
-        codiceSede:      document.getElementById('codiceSede').value.trim(),
-        esito:           document.querySelector('input[name="esito"]:checked').value,
-        note:            noteField.value.trim(),
-        chiamataVianova: document.querySelector('input[name="chiamataVianova"]:checked').value
+        codiceSede:    document.getElementById('codiceSede').value.trim(),
+        esito:         document.querySelector('input[name="esito"]:checked').value,
+        note:          noteField.value.trim(),
+        nomeOperatore: document.getElementById('nomeOperatore').value.trim()
       });
 
       fetch(APPS_SCRIPT_URL, {
