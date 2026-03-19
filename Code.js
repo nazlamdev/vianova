@@ -3,7 +3,7 @@
 // Gestisce invio form e notifiche email
 // ============================================================
 
-var RECIPIENTS = ['psvianova@sitespa.it', 'supportops@sitespa.it'];
+var RECIPIENTS = ['psvianova@sitespa.it', 'supportops@sitespa.it', 'alessandro.mendola@vianova.it'];
 var SENDER_NAME = 'Vianova Presidio';
 
 // ------------------------------------
