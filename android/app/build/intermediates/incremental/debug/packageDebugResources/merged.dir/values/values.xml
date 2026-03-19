@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#1d4ed8</color>
+    <color name="colorPrimaryVariant">#1e3a8a</color>
+    <string name="app_name">Vianova Presidio</string>
+    <style name="Theme.Vianova" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#1d4ed8</item>
+        <item name="colorPrimaryVariant">#1e3a8a</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#059669</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowBackground">#f0f2f5</item>
+    </style>
+</resources>

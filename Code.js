@@ -94,6 +94,41 @@ function doPost(e) {
   }
 }
 
+// ------------------------------------
+// TEST - esegui dal editor per verificare email
+// ------------------------------------
+function testEmail() {
+  var fakeParams = {
+    codiceSede:      'TEST-001',
+    esito:           'KO',
+    note:            'Test automatico - verifica funzionamento email',
+    chiamataVianova: 'SI'
+  };
+
+  var fakeEvent = { parameter: fakeParams };
+
+  Logger.log('Avvio test email...');
+  Logger.log('Destinatari: ' + RECIPIENTS.join(', '));
+
+  try {
+    var now     = new Date();
+    var dateStr = Utilities.formatDate(now, Session.getScriptTimeZone(), 'dd/MM/yyyy HH:mm');
+    var subject = '[Vianova TEST] Esito Presidio – ' + fakeParams.codiceSede + ' – ' + fakeParams.esito;
+    var plain   = 'TEST EMAIL VIANOVA\n\nData/Ora: ' + dateStr + '\nCodice Sede: ' + fakeParams.codiceSede + '\nEsito: ' + fakeParams.esito + '\nNote: ' + fakeParams.note + '\nChiamata Vianova: ' + fakeParams.chiamataVianova;
+
+    GmailApp.sendEmail(
+      RECIPIENTS[0],
+      subject,
+      plain,
+      { cc: RECIPIENTS.slice(1).join(','), name: SENDER_NAME }
+    );
+
+    Logger.log('✅ Email inviata con successo a: ' + RECIPIENTS.join(', '));
+  } catch (err) {
+    Logger.log('❌ ERRORE: ' + err.toString());
+  }
+}
+
 // ---- helper: escape HTML ----
 function _esc(str) {
   return String(str)

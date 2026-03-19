@@ -1,0 +1,5 @@
+it.sitespa.vianova.test.app-androidTest-0 /Users/neno/GithubProject/vianova/android/app/build/generated/res/resValues/androidTest/debug
+it.sitespa.vianova.test.app-updated_navigation_xml-1 /Users/neno/GithubProject/vianova/android/app/build/generated/updated_navigation_xml/debugAndroidTest
+it.sitespa.vianova.test.app-mergeDebugAndroidTestResources-2 /Users/neno/GithubProject/vianova/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+it.sitespa.vianova.test.app-mergeDebugAndroidTestResources-3 /Users/neno/GithubProject/vianova/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+it.sitespa.vianova.test.app-debugAndroidTest-4 /Users/neno/GithubProject/vianova/android/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
