@@ -275,6 +275,14 @@
     <form id="esitoForm" novalidate>
 
       <div class="form-group">
+        <label class="field-label" for="nomeTecnico">
+          Nome Tecnico<span class="required-star">*</span>
+        </label>
+        <input type="text" id="nomeTecnico" name="nomeTecnico"
+               placeholder="Es. Mario Rossi" autocomplete="off" required>
+      </div>
+
+      <div class="form-group">
         <label class="field-label" for="codiceSede">
           Codice Sede<span class="required-star">*</span>
         </label>
@@ -343,11 +351,13 @@
 
     // ---- validazione manuale ----
     function validate() {
+      var tecnico   = document.getElementById('nomeTecnico').value.trim();
       var sede      = document.getElementById('codiceSede').value.trim();
       var esito     = document.querySelector('input[name="esito"]:checked');
       var operatore = document.getElementById('nomeOperatore').value.trim();
       var note      = noteField.value.trim();
 
+      if (!tecnico)   { showFeedback('error', 'Inserisci il Nome Tecnico.'); return false; }
       if (!sede)      { showFeedback('error', 'Inserisci il Codice Sede.'); return false; }
       if (!esito)     { showFeedback('error', 'Seleziona un Esito (OK / KO).'); return false; }
       if (esito.value === 'KO' && !note) {
@@ -367,6 +377,7 @@
       setLoading(true);
 
       var data = new URLSearchParams({
+        nomeTecnico:   document.getElementById('nomeTecnico').value.trim(),
         codiceSede:    document.getElementById('codiceSede').value.trim(),
         esito:         document.querySelector('input[name="esito"]:checked').value,
         note:          noteField.value.trim(),

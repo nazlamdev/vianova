@@ -20,7 +20,8 @@ function doGet(e) {
 // ------------------------------------
 function doPost(e) {
   try {
-    var params   = e.parameter;
+    var params    = e.parameter;
+    var tecnico   = (params.nomeTecnico   || '').trim() || 'N/D';
     var sede      = (params.codiceSede    || '').trim() || 'N/D';
     var esito     = (params.esito         || '').trim() || 'N/D';
     var note      = (params.note          || '').trim();
@@ -36,6 +37,7 @@ function doPost(e) {
       'ESITO INTERVENTO VIANOVA',
       '',
       'Data/Ora:         ' + dateStr,
+      'Nome Tecnico:     ' + tecnico,
       'Codice Sede:      ' + sede,
       'Esito:            ' + esito,
       (esito === 'KO' && note ? 'Note:             ' + note : ''),
@@ -63,6 +65,7 @@ function doPost(e) {
       + '<h2>Esito Intervento Vianova</h2>'
       + '<table>'
       + '<tr><td class="lbl">Data/Ora</td><td>' + dateStr + '</td></tr>'
+      + '<tr><td class="lbl">Nome Tecnico</td><td><strong>' + _esc(tecnico) + '</strong></td></tr>'
       + '<tr><td class="lbl">Codice Sede</td><td><strong>' + _esc(sede) + '</strong></td></tr>'
       + '<tr><td class="lbl">Esito</td><td><span class="badge ' + esito.toLowerCase() + '">' + _esc(esito) + '</span></td></tr>'
       + noteRow
